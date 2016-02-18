@@ -32,6 +32,7 @@ public final class FormaListadoRecomendaciones
     public Collection getRecomendaciones() {
         return (this.recomendaciones);
     }
+
   
     public int getContador() {
         return (this.contador);
