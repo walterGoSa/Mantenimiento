@@ -63,15 +63,29 @@
             </tr>
 			<tr>
                 <td align="right">
-                    <fmt:message key="formaNuevoLugar.etiqueta.estado" />
+                    <fmt:message key="formaNuevoLugar.etiqueta.buscaestado" />
                 </td>
                 <td align="left">
-                    <input type="text" 
-                           name="estado" 
+                    <input type="text"
+						   id="est"
                            size="50" 
                            maxlength="100" 
-                           value="${formaNuevoLugar.estado}" />
+                           value="${formaNuevoLugar.estado}"
+						   onkeyup="ListaEstado()"/>
                 </td>
+            </tr>
+			<tr align="center">
+				<td align="right">
+                    <fmt:message key="formaNuevoLugar.etiqueta.estado" />
+                </td>
+				<td align="left">
+					<select id="listaE" name="estado" required>
+						<option value="" disabled selected hidden>Seleccione un estado</option>
+						<c:forEach var="estado" items="${formaNuevoLugar.estados}">
+							<option value='<c:out value="${lugar.nombre}"/>'><c:out value="${estado.nombre}"/></option>
+						</c:forEach>
+					</select>
+				</td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
@@ -84,7 +98,7 @@
                            onclick="forma.action='procesarRegistroLugar.do?volver=si'"/>
                     <input type="button"
                            value="Reset"
-                           onclick="location.href='solicitarRegistroLugar.do'" />
+                           onclickan="location.href='solicitarRegistroLugar.do'" />
                     <input type="submit" 
                            name="org.apache.struts.taglib.html.CANCEL" 
                            value="cancelar" 
