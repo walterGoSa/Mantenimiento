@@ -69,7 +69,7 @@ public class EstadoDAO {
                                     .createCriteria(Estado.class)
                                     .list();
                                     
-              log.debug(">buscarTodos() ---- list   ");                                 
+              log.debug(">buscarTodos() ---- list " + estados);                                 
         } catch (HibernateException e) {
             if (log.isWarnEnabled()) {
                 log.warn("<HibernateException");
@@ -172,8 +172,7 @@ public class EstadoDAO {
             if (log.isDebugEnabled()) {
                  log.debug("<<<<<<<<< create query ok " );
             }
-
-            query.setParameter("nombre", nombreEstado);
+			query.setParameter("Nombre", nombreEstado);
             if (log.isDebugEnabled()) {
                  log.debug("<<<<<<<<< set Parameter ok antes del query list >>>>>");
             }
@@ -195,6 +194,48 @@ public class EstadoDAO {
             throw new ExcepcionInfraestructura(ex);
         }
     }
+	
+	public Collection buscaEstado(String nombreEstado)
+            throws ExcepcionInfraestructura {
+				
+		if (log.isDebugEnabled()) {
+            log.debug(">existeRol(nombreRol)");
+        }
 
+        try {
+            String hql = "from Estado where nombre like '"+nombreEstado+"%'";
+            
+             if (log.isDebugEnabled()) {
+                 log.debug(hql + nombreEstado);
+            }
+        
+            Query query = HibernateUtil.getSession()
+                                        .createQuery(hql);
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< create query ok " );
+            }
+
+            
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< set Parameter ok antes del query list >>>>>");
+            }
+            List results = query.list();
+            int resultado = results.size();
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< Result size " + resultado);
+            }
+            if (resultado == 0) {
+               return results;
+            }
+            
+            return results;
+
+        } catch (HibernateException ex) {
+            if (log.isWarnEnabled()) {
+                log.warn("<HibernateException *******************");
+            }
+            throw new ExcepcionInfraestructura(ex);
+        }
+    }
 
 }
