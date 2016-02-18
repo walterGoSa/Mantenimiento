@@ -24,7 +24,7 @@
     <table cellpadding="0" cellspacing="0" width="60%" border="0">
         <tr>
             <td colspan="4" style="padding-top:25px; padding-bottom:25px;">
-                <a href="solicitarRegistroRecomendacion.do" class="HipervinculoAdmon">Agregar nuevo recomendacion...</a>
+                <a href="solicitarRegistroRecomendacion.do" class="HipervinculoAdmon">Agregar nueva recomendacion...</a>
             </td>
         </tr>
         <tr>
@@ -34,6 +34,7 @@
         </tr>
         <tr bgcolor="#CCCCCC">
          <td><b><fmt:message key="formaListadoRecomendaciones.etiqueta.nombre" /></b></td>
+         <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoRecomendaciones.etiqueta.estado" /></b></td>
          <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoRecomendaciones.etiqueta.usuario" /></b></td>
          <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoRecomendaciones.etiqueta.fecha" /></b></td>
          <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoRecomendaciones.etiqueta.comentarios" /></b></td>
@@ -44,6 +45,7 @@
         <c:forEach var="recomendacion" items="${formaListadoRecomendaciones.recomendaciones}">
             <tr>
                 <td align="left" width="20%"><c:out value="${recomendacion.nombre}"/></td>
+                <td align="left" width="20%"><c:out value="${recomendacion.estado}"/></td>
                 <td align="left" width="60%"><c:out value="${recomendacion.usuario}"/></td>
 				<td align="left" width="60%"><c:out value="${recomendacion.fecha}"/></td>
 				<td align="left" width="60%"><c:out value="${recomendacion.comentario}"/></td>
